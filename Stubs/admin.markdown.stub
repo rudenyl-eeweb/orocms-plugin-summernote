@@ -1,0 +1,10 @@
+<link href="/summernote/assets.css" rel="stylesheet">
+<script src="/summernote/assets.js"></script>
+<script>
+$(function() {
+    $('textarea').summernote({
+        height: 500,
+        tabsize: 2
+    });
+});
+</script>

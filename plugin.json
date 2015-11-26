@@ -1,0 +1,18 @@
+{
+    "name": "SummerNote",
+    "title": "SummerNote",
+    "alias": "summernote",
+    "description": "Super Simple WYSIWYG Editor on Bootstrap.",
+    "url": "http://summernote.org/",
+    "keywords": [],
+    "providers": [
+        "Plugins\\SummerNote\\SummerNoteServiceProvider"
+    ],
+    "hooks": [
+        {
+            "event": "articles.admin.onAfterRenderItem",
+            "class": "Plugins\\SummerNote\\Hooks\\ArticlesAdminOnAfterRenderItem"
+        }
+    ],
+    "files": []
+}
