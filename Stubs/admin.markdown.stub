@@ -1,10 +1,38 @@
+<!-- codemirror //-->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.min.css" />
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/mode/xml/xml.min.js"></script>
+
 <link href="/summernote/assets.css" rel="stylesheet">
 <script src="/summernote/assets.js"></script>
 <script>
 $(function() {
-    $('textarea').summernote({
+    $('textarea[name="description"]').summernote({
         height: 500,
-        tabsize: 2
+        tabsize: 4,
+        codemirror: {
+            lineNumbers: true,
+            lineWrapping: true
+        }
+    })
+    .on('summernote.change', function(e, data, $el) {
+        App.set('page_exit_confirmation', true);
+    });
+
+    $('form').on('submit', function() {
+        // get markdown content
+        var content = $('textarea[name="description"]').val();
+        if (content == '') {
+            Notify.alert({
+                options: {
+                    message: 'Article content seems to be empty. Do you mind if you add somethin\' in there?'
+                }
+            });
+            return false;
+        }
+
+        App.set('page_exit_confirmation', false);
+        return true;
     });
 });
 </script>
