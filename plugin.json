@@ -10,6 +10,10 @@
     ],
     "hooks": [
         {
+            "event": "articles.onAfterRenderItem",
+            "class": "Plugins\\SummerNote\\Hooks\\ArticlesOnAfterRenderItem"
+        },
+        {
             "event": "articles.admin.onAfterRenderItem",
             "class": "Plugins\\SummerNote\\Hooks\\ArticlesAdminOnAfterRenderItem"
         }

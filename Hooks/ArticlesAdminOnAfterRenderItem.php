@@ -7,7 +7,7 @@ class ArticlesAdminOnAfterRenderItem
 {
     public function handle($view)
     {
-        $buffer = (new Stub(__DIR__ . '/../Stubs/admin.markdown.stub', []))->render();
+        $buffer = (new Stub(__DIR__ . '/../Stubs/admin.summernote.stub', []))->render();
         $view->getFactory()->startSection('header', $buffer);
     }   
 }

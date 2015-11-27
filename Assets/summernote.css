@@ -2,5 +2,7 @@
 
 /* overrides */
 .note-editor .btn-group span {
+    margin-top: inherit;
+    vertical-align: middle;
     font-size: inherit !important;
 }
