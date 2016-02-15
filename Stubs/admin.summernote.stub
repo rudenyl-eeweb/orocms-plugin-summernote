@@ -1,15 +1,11 @@
-<!-- codemirror //-->
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.min.css" />
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/mode/xml/xml.min.js"></script>
-
 <link href="/summernote/assets.css" rel="stylesheet">
 <script src="/summernote/assets.js"></script>
 <script>
 $(function() {
-    $('textarea[name="description"]').summernote({
-        height: 500,
+    $('textarea[role="wysiwyg"]').summernote({
+        height: 350,
         tabsize: 4,
+        toolbar: summernote_config.toolbar.default,
         codemirror: {
             lineNumbers: true,
             lineWrapping: true

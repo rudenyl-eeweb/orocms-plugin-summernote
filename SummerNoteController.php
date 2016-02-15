@@ -33,13 +33,6 @@ class SummerNoteController extends Controller
         return $this->cacheResponse($response);
     }
 
-    public function getAssets($type)
-    {
-        $fs = new FileSystem;
-
-        return $fs->glob(__DIR__ . '/Assets/*.' . $type);
-    }
-
     /**
      * Return assets as a string
      *
@@ -48,10 +41,15 @@ class SummerNoteController extends Controller
      */
     public function dumpAssetsAsString($type)
     {
-        $files = $this->getAssets($type);
+        $fs = new Filesystem;
+        $files = $fs->allFiles(__DIR__ . '/Assets');
 
         $content = '';
         foreach ($files as $file) {
+            if ($fs->extension($file) <> $type) {
+                continue;
+            }
+
             $content .= file_get_contents($file) . "\n";
         }
 

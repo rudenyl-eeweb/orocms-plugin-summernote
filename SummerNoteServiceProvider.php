@@ -36,15 +36,8 @@ class SummerNoteServiceProvider extends ServiceProvider
         ];
 
         $this->app['router']->group($config, function($router) {
-            $router->get('assets.css', [
-                'uses' => 'SummerNoteController@getStyles',
-                'as' => 'summernote.assets.css',
-            ]);
-
-            $router->get('assets.js', [
-                'uses' => 'SummerNoteController@getJS',
-                'as' => 'summernote.assets.js',
-            ]);
+            $router->get('assets.css', 'SummerNoteController@getStyles');
+            $router->get('assets.js', 'SummerNoteController@getJS');
         });
     }
 }
