@@ -5,7 +5,6 @@ $(function() {
     $('textarea[role="wysiwyg"]').summernote({
         height: 350,
         tabsize: 4,
-        toolbar: summernote_config.toolbar.default,
         codemirror: {
             lineNumbers: true,
             lineWrapping: true
