@@ -7,6 +7,11 @@ use Illuminate\Http\Response;
 
 class SummerNoteController extends Controller
 {
+    /**
+    * Return stylesheets.
+    *
+    * @return Illuminate\Http\Response
+    */
     public function getStyles()
     {
         $content = $this->dumpAssetsAsString('css');
@@ -20,6 +25,11 @@ class SummerNoteController extends Controller
         return $this->cacheResponse($response);
     }
 
+    /**
+    * Return javascript resources.
+    *
+    * @return Illuminate\Http\Response
+    */
     public function getJS()
     {
         $content = $this->dumpAssetsAsString('js');
@@ -27,6 +37,29 @@ class SummerNoteController extends Controller
         $response = response(
             $content, 200, [
                 'Content-Type' => 'text/javascript',
+            ]
+        );
+
+        return $this->cacheResponse($response);
+    }
+
+    /**
+    * Return font resources.
+    *
+    * @return Illuminate\Http\Response
+    */
+    public function getFonts($font)
+    {
+        $fs = new Filesystem;
+
+        $fontPath= __DIR__ . '/Assets/font/' . $font;
+
+        $mime = $fs->mimeType($fontPath);
+        $content = $fs->get($fontPath);
+        
+        $response = response(
+            $content, 200, [
+                'Content-Type' => $mime,
             ]
         );
 
